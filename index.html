@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продажа чернозема с доставкой</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="in.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            flex: 0 0 calc(33.333% - 20px);
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .calculator {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .range-slider {
+            width: 100%;
+        }
+        
+        .range-value {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+        
+        .result {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        
+        .result h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .result p {
+            margin-bottom: 10px;
+        }
+        
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+        
+        .order-form {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .order-form.active {
+            display: block;
+        }
+        
+        .reviews {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .review {
+            flex: 0 0 calc(50% - 20px);
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .review-name {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .review-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 3px;
+        }
+        
+        .review-rating {
+            color: #f1c40f;
+            margin-bottom: 10px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #e74c3c;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            top: 20px;
+            transform: rotate(45deg);
+            box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            top: 15px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -8px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: #e74c3c;
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Анимации */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .feature {
+                flex: 0 0 100%;
+            }
+            
+            .review {
+                flex: 0 0 100%;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-dot {
+                left: 23px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-dot {
+                right: auto;
+                left: 23px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after {
+                right: auto;
+                left: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo animate-up">Чернозём<span style="color: #e74c3c;">PRO</span></div>
+            <div class="slogan animate-up">Качественный чернозём с бесплатной доставкой до 50 км</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate-up">Лучший чернозём для вашего участка</h1>
+            <p class="animate-up">Высококачественный грунт с доставкой прямо к вам. Улучшите плодородие вашей почвы уже сегодня!</p>
+            <a href="#calculator" class="btn animate-up">Рассчитать стоимость</a>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-up">Почему выбирают нас</h2>
+            <div class="features">
+                <div class="feature animate-up">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Качество</h3>
+                    <p>Наш чернозём проходит строгий контроль качества и имеет все необходимые сертификаты.</p>
+                </div>
+                <div class="feature animate-up">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставка в течение 1-3 дней в радиусе 50 км от нашего склада.</p>
+                </div>
+                <div class="feature animate-up">
+                    <div class="feature-icon">💰</div>
+                    <h3>Доступные цены</h3>
+                    <p>Лучшее соотношение цены и качества на рынке. Скидки при больших заказах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="calculator" class="section">
+        <div class="container">
+            <h2 class="section-title animate-up">Калькулятор стоимости</h2>
+            <div class="calculator animate-up">
+                <div class="form-group">
+                    <label for="product">Тип чернозема</label>
+                    <select id="product">
+                        <option value="standard">Стандартный (1500 руб/тонна)</option>
+                        <option value="premium">Премиум (2000 руб/тонна)</option>
+                        <option value="organic">Органический с удобрениями (2500 руб/тонна)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Количество (тонн) <span id="quantityValue" class="range-value">5</span></label>
+                    <input type="range" id="quantity" class="range-slider" min="1" max="20" value="5" step="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="distance">Расстояние доставки (км) <span id="distanceValue" class="range-value">10</span></label>
+                    <input type="range" id="distance" class="range-slider" min="1" max="50" value="10" step="1">
+                </div>
+                
+                <div class="result">
+                    <h3>Ваш заказ</h3>
+                    <p>Тип чернозема: <span id="resultProduct">Стандартный</span></p>
+                    <p>Количество: <span id="resultQuantity">5</span> тонн</p>
+                    <p>Расстояние доставки по Перми: <span id="resultDistance">до 50</span> км</p>
+                    <p>Стоимость чернозема: <span id="resultProductPrice">7500</span> руб</p>
+                    <p class="total-price">Итого: <span id="resultTotalPrice">7500</span> руб</p>
+                    
+                    <button id="orderBtn" class="btn" style="margin-top: 20px;">Оформить заказ</button>
+                </div>
+                
+                <div id="orderForm" class="order-form">
+                    <h3 style="margin-bottom: 20px;">Форма заказа</h3>
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Адрес доставки</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Желаемая дата доставки</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Комментарии к заказу</label>
+                        <input type="text" id="comments">
+                    </div>
+                    
+                    <div class="result" style="margin-top: 20px;">
+                        <h3>Детали заказа</h3>
+                        <p>Тип чернозема: <span id="formProduct">Стандартный</span></p>
+                        <p>Количество: <span id="formQuantity">5</span> тонн</p>
+                        <p>Расстояние доставки: <span id="formDistance">10</span> км</p>
+                        <p class="total-price">Итого: <span id="formTotalPrice">7500</span> руб</p>
+                    </div>
+                    
+                    <button id="submitOrder" class="btn" style="margin-top: 20px;">Отправить заказ</button>
+                    <button id="editOrder" class="btn" style="margin-top: 20px; background-color: #7f8c8d;">Изменить заказ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-up">Как мы работаем</h2>
+            <div class="timeline">
+                <div class="timeline-item animate-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Шаг 1</div>
+                        <h3>Заявка</h3>
+                        <p>Вы оставляете заявку на сайте или по телефону. Мы уточняем детали заказа.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Шаг 2</div>
+                        <h3>Подтверждение</h3>
+                        <p>Мы связываемся с вами для подтверждения заказа и согласовываем время доставки.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Шаг 3</div>
+                        <h3>Доставка</h3>
+                        <p>В согласованное время мы доставляем чернозём прямо к вам на участок.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Шаг 4</div>
+                        <h3>Оплата</h3>
+                        <p>Вы проверяете качество товара и производите оплату удобным способом.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-up">Отзывы наших клиентов</h2>
+            <div class="reviews">
+                <div class="review animate-up">
+                    <div class="review-header">
+                        <div class="review-avatar">ИП</div>
+                        <div>
+                            <div class="review-name">Иван Петров</div>
+                            <div class="review-date">15 мая 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p>Заказывал чернозём для сада. Качество отличное, доставка вовремя. Цены адекватные. Рекомендую!</p>
+                </div>
+                <div class="review animate-up">
+                    <div class="review-header">
+                        <div class="review-avatar">АС</div>
+                        <div>
+                            <div class="review-name">Анна Сидорова</div>
+                            <div class="review-date">2 июня 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★☆</div>
+                    <p>Быстро привезли, хороший грунт. Единственное - немного задержались с доставкой, но предупредили заранее.</p>
+                </div>
+                <div class="review animate-up">
+                    <div class="review-header">
+                        <div class="review-avatar">ДК</div>
+                        <div>
+                            <div class="review-name">Дмитрий Козлов</div>
+                            <div class="review-date">20 июля 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p>Третий раз заказываю у них. Постоянное качество, хороший сервис. Буду обращаться ещё.</p>
+                </div>
+                <div class="review animate-up">
+                    <div class="review-header">
+                        <div class="review-avatar">ОМ</div>
+                        <div>
+                            <div class="review-name">Ольга Михайлова</div>
+                            <div class="review-date">5 августа 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p>Отличный чернозём! Урожайность на участке повысилась заметно. Спасибо за качественный продукт.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">Главная</a>
+                <a href="#calculator" class="footer-link">Калькулятор</a>
+                <a href="#" class="footer-link">О нас</a>
+                <a href="#" class="footer-link">Контакты</a>
+            </div>
+            <div class="copyright">
+                © 2023 ЧернозёмPRO. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Анимации при прокрутке
+        const animateElements = document.querySelectorAll('.animate-up');
+        
+        const animateOnScroll = () => {
+            animateElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('show');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Инициализация при загрузке
+        
+        // Калькулятор
+        const productSelect = document.getElementById('product');
+        const quantitySlider = document.getElementById('quantity');
+        const quantityValue = document.getElementById('quantityValue');
+        const distanceSlider = document.getElementById('distance');
+        const distanceValue = document.getElementById('distanceValue');
+        
+        // Результаты калькулятора
+        const resultProduct = document.getElementById('resultProduct');
+        const resultQuantity = document.getElementById('resultQuantity');
+        const resultDistance = document.getElementById('resultDistance');
+        const resultProductPrice = document.getElementById('resultProductPrice');
+        const resultTotalPrice = document.getElementById('resultTotalPrice');
+        
+        // Форма заказа
+        const orderBtn = document.getElementById('orderBtn');
+        const orderForm = document.getElementById('orderForm');
+        const editOrderBtn = document.getElementById('editOrder');
+        const submitOrderBtn = document.getElementById('submitOrder');
+        
+        // Поля формы
+        const formProduct = document.getElementById('formProduct');
+        const formQuantity = document.getElementById('formQuantity');
+        const formDistance = document.getElementById('formDistance');
+        const formTotalPrice = document.getElementById('formTotalPrice');
+        
+        // Цены
+        const productPrices = {
+            standard: 1500,
+            premium: 2000,
+            organic: 2500
+        };
+        
+        const productNames = {
+            standard: 'Стандартный',
+            premium: 'Премиум',
+            organic: 'Органический с удобрениями'
+        };
+        
+        // Обновление значений слайдеров
+        quantitySlider.addEventListener('input', updateCalculator);
+        distanceSlider.addEventListener('input', updateCalculator);
+        productSelect.addEventListener('change', updateCalculator);
+        
+        function updateCalculator() {
+            // Обновление отображаемых значений
+            quantityValue.textContent = quantitySlider.value;
+            distanceValue.textContent = distanceSlider.value;
+            
+            // Расчет стоимости
+            const selectedProduct = productSelect.value;
+            const quantity = parseInt(quantitySlider.value);
+            
+            const productPrice = productPrices[selectedProduct];
+            const totalProductPrice = productPrice * quantity;
+            
+            // Общая стоимость (без учета доставки)
+            const totalPrice = totalProductPrice;
+            
+            // Обновление результатов
+            resultProduct.textContent = productNames[selectedProduct];
+            resultQuantity.textContent = quantity;
+            resultDistance.textContent = distanceSlider.value;
+            resultProductPrice.textContent = totalProductPrice;
+            resultTotalPrice.textContent = totalPrice;
+            
+            // Обновление формы заказа (если открыта)
+            if (orderForm.classList.contains('active')) {
+                formProduct.textContent = productNames[selectedProduct];
+                formQuantity.textContent = quantity;
+                formDistance.textContent = distanceSlider.value;
+                formTotalPrice.textContent = totalPrice;
+            }
+        }
+        
+        // Инициализация калькулятора
+        updateCalculator();
+        
+        // Обработка кнопки заказа
+        orderBtn.addEventListener('click', function() {
+            orderForm.classList.add('active');
+            orderBtn.style.display = 'none';
+            
+            // Заполнение формы
+            formProduct.textContent = productNames[productSelect.value];
+            formQuantity.textContent = quantitySlider.value;
+            formDistance.textContent = distanceSlider.value;
+            formTotalPrice.textContent = resultTotalPrice.textContent;
+            
+            // Прокрутка к форме
+            orderForm.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Редактирование заказа
+        editOrderBtn.addEventListener('click', function() {
+            orderForm.classList.remove('active');
+            orderBtn.style.display = 'inline-block';
+        });
+        
+        // Отправка заказа
+        submitOrderBtn.addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const date = document.getElementById('date').value;
+            const comments = document.getElementById('comments').value;
+            
+            // Простая валидация
+            if (!name || !phone || !address || !date) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
+            // Формирование сообщения для Telegram
+            const message = `
+                📦 Новый заказ чернозема:
+                
+                👤 Имя: ${name}
+                📞 Телефон: ${phone}
+                🏠 Адрес: ${address}
+                📅 Дата доставки: ${date}
+                
+                🚜 Детали заказа:
+                Тип: ${productNames[productSelect.value]}
+                Количество: ${quantitySlider.value} тонн
+                Расстояние: ${distanceSlider.value} км
+                💰 Итого: ${resultTotalPrice.textContent} руб
+                
+                💬 Комментарии: ${comments || 'нет'}
+            `;
+            
+            // Отправка в Telegram (нужно заменить YOUR_BOT_TOKEN и YOUR_CHAT_ID на реальные значения)
+            const botToken = 'YOUR_BOT_TOKEN';
+            const chatId = 'YOUR_CHAT_ID';
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            
+            axios.post(url, {
+                chat_id: chatId,
+                text: message,
+                parse_mode: 'HTML'
+            })
+            .then(response => {
+                alert('Ваш заказ успешно отправлен! Мы свяжемся с вами в ближайшее время.');
+                // Очистка формы
+                document.getElementById('name').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('address').value = '';
+                document.getElementById('date').value = '';
+                document.getElementById('comments').value = '';
+                
+                // Закрытие формы
+                orderForm.classList.remove('active');
+                orderBtn.style.display = 'inline-block';
+            })
+            .catch(error => {
+                console.error('Ошибка при отправке заказа:', error);
+                alert('Произошла ошибка при отправке заказа. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.');
+            });
+        });
+    });
+
+    // Проверка на мобильное устройство
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    // Для мобильных устройств изменяем некоторые параметры
+    if (isMobile) {
+        // Уменьшаем анимации для производительности
+        document.documentElement.style.setProperty('--animate-duration', '0.5s');
+        
+        // Изменяем поведение слайдеров
+        const sliders = document.querySelectorAll('input[type="range"]');
+        sliders.forEach(slider => {
+            slider.style.touchAction = 'manipulation';
+        });
+        
+        // Оптимизация для тач-устройств
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.style.minWidth = '120px';
+            btn.style.padding = '12px 15px';
+        });
+    }
+    </script>
+</body>
+</html>
